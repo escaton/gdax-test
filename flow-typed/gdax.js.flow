@@ -1,0 +1,28 @@
+declare module 'gdax' {
+  declare interface ProductInfo {
+    id: string,
+    base_currency: string,
+    quote_currency: string,
+    base_min_size: string,
+    base_max_size: string,
+    quote_increment: string,
+    display_name: string,
+    margin_enabled: boolean
+  }
+
+  declare interface ProductOrderBook {
+    asks: ([ string, string, number ])[],
+    bids: ([ string, string, number ])[],
+    sequence: number
+  }
+
+  declare class PublicClient {
+    constructor(apiURI?: string): this;
+    getProducts(): Promise<ProductInfo[]>;
+    getProductOrderBook(productID: string, options?: { level: (1 | 2 | 3) }): Promise<ProductOrderBook>;
+  }
+
+  declare export default {
+    PublicClient: typeof PublicClient
+  }
+}
