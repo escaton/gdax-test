@@ -1,0 +1,4 @@
+{
+  "jest.pathToJest": "npm run test --",
+  "javascript.validate.enable": false
+}
