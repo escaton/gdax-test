@@ -1,9 +1,8 @@
-import Gdax from 'gdax';
 import GdaxService from '../gdax';
 
-it('creates Gdax#PublicClient instance', () => {
+it('return GdaxService instance', () => {
   const instance = GdaxService.get();
-  expect(instance.constructor).toBe(Gdax.PublicClient);
+  expect(instance.constructor).toBe(GdaxService);
 });
 
 it('creates one singleton', () => {

@@ -1,5 +1,5 @@
 declare module 'gdax' {
-  declare interface ProductInfo {
+  declare export interface ProductInfo {
     id: string,
     base_currency: string,
     quote_currency: string,
@@ -10,7 +10,7 @@ declare module 'gdax' {
     margin_enabled: boolean
   }
 
-  declare interface ProductOrderBook {
+  declare export interface ProductOrderBook {
     asks: ([ string, string, number ])[],
     bids: ([ string, string, number ])[],
     sequence: number
