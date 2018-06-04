@@ -3,7 +3,7 @@ import * as React from 'react';
 import WithGdax from '../../hoc/WithGdax';
 import Loading from '../Loading';
 
-import { sumCalculation } from './utils';
+import { sumCalculation, formatSum } from './utils';
 import type { ProductInfo } from 'gdax';
 
 const ProductsBookProvider = WithGdax((service, props) =>
@@ -52,11 +52,14 @@ export default class Preview<
   };
   renderPreview(data: *) {
     const { mode, amount, product } = this.props;
-    const orders = mode === 'buy' ? data.asks : data.bids;
-    const currency = product.quote_currency;
+    const [orders, currency, minimalAmount] =
+      mode === 'buy'
+        ? [data.asks, product.quote_currency, product.quote_increment]
+        : [data.bids, product.base_currency, product.base_min_size];
     const sum = sumCalculation(orders, amount);
     if (sum >= 0) {
-      return `${currency} ${sum}`;
+      const displaySum = formatSum(minimalAmount, sum);
+      return `${currency} ${displaySum}`;
     } else {
       return `not enough data`;
     }

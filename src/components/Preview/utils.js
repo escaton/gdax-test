@@ -17,3 +17,13 @@ export const sumCalculation = (orders: *, amount: *): number => {
   }
   return -1;
 };
+
+export const formatSum = (_minimalAmount: *, sum: *): string => {
+  let i = 0;
+  let minimalAmount = parseFloat(_minimalAmount);
+  while (minimalAmount % 1 !== 0) {
+    minimalAmount *= 10;
+    i++;
+  }
+  return sum.toFixed(i);
+};
