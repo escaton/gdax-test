@@ -84,7 +84,7 @@ export default class Preview<
             if (data) {
               return this.renderPreview(data);
             } else if (error) {
-              return <span>An error accured</span>;
+              return <span>An error occurred</span>;
             } else {
               return <Loading />;
             }

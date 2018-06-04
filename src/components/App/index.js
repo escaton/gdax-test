@@ -17,7 +17,7 @@ export default class App extends React.PureComponent<{}> {
             if (loading) {
               return <Loading />;
             } else if (error) {
-              return <div>An error occured</div>;
+              return <span>An error occurred</span>;
             } else if (products) {
               return <Form products={products} />;
             } else {
