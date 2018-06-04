@@ -15,3 +15,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - save selected values (product, buy/sell) to localStorage and restore them on load
 - fix `WithGdax` hoc unnecessary updates
 - add flow types for `src/Form/actions.js`
+- fix `ws` module because it breaks production build
+  - eject and mock it in webpack
+  - or remove `gdax` and get data just with `fetch`
