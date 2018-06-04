@@ -18,7 +18,7 @@ export default function WithGdax<Props, Data: *>(
   return class GdaxProvider extends React.PureComponent<
     {
       ...Props,
-      children: (boolean, ?Data, any) => ?React$Element<any>
+      children: (boolean, ?Data, any) => any
     },
     State
   > {

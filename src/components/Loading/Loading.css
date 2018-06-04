@@ -1,0 +1,24 @@
+.Loading__dot:after {
+  content: '.';
+  margin: 0 2px;
+  animation: dots 2s infinite linear;
+}
+
+.Loading__dot_pos_2:after {
+  animation-delay: 0.5s;
+}
+
+.Loading__dot_pos_3:after {
+  animation-delay: 1s;
+}
+
+@keyframes dots {
+  0%,
+  25% {
+    opacity: 1;
+  }
+  26%,
+  100% {
+    opacity: 0;
+  }
+}

@@ -1,0 +1,12 @@
+.ProductSelect {
+  appearance: none;
+  border: none;
+  padding: 0 10px;
+  border-radius: 1px;
+  color: hsla(0, 0%, 100%, 0.5);
+  background-color: hsla(0, 0%, 100%, 0.15);
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  font-size: 14px;
+}

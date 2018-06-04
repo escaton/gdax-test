@@ -1,6 +1,10 @@
 // @flow
 import * as React from 'react';
 import type { ProductInfo } from 'gdax';
+import { block } from 'nano-bem';
+import './ProductSelect.css';
+
+const b = block('ProductSelect');
 
 export default class ProductSelect<T: ProductInfo> extends React.PureComponent<{
   products: T[],
@@ -13,7 +17,7 @@ export default class ProductSelect<T: ProductInfo> extends React.PureComponent<{
   render() {
     const { products, selectedId } = this.props;
     return (
-      <select value={selectedId} onChange={this.onChange}>
+      <select className={b()} value={selectedId} onChange={this.onChange}>
         {products.map(value => (
           <option key={value.id} value={value.id}>
             {value.display_name}
