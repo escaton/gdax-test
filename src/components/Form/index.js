@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import ProductsSelect from '../ProductsSelect';
+import Input from '../Input';
 import Preview from '../Preview';
 
 import * as actions from './actions';
@@ -27,15 +28,11 @@ export default class Form extends React.PureComponent<
   onChangeMode = (mode: string) => {
     this.dispatch(actions.changeMode(mode));
   };
-  onChangeBase = (base: string) => {
-    this.setState({
-      base: +base
-    });
+  onChangeValue = (value: *) => {
+    this.dispatch(actions.changeValue(this.props.products, value));
   };
-  onChangeQuote = (quote: *) => {
-    this.setState({
-      quote: +quote
-    });
+  onInputBlur = () => {
+    this.dispatch(actions.inputBlur());
   };
   render() {
     const { state, props } = this;
@@ -61,25 +58,17 @@ export default class Form extends React.PureComponent<
           value="sell"
           onChange={e => this.onChangeMode(e.target.value)}
         />Sell
-        {this.state.mode === 'buy' ? (
-          <input
-            type="text"
-            onChange={e => this.onChangeBase(e.target.value)}
-            value={state.base}
-            // step={selectedProduct.base_min_size}
-            // min={selectedProduct.base_min_size}
-            // max={selectedProduct.base_max_size}
-          />
-        ) : (
-          <input
-            type="text"
-            onChange={e => this.onChangeQuote(e.target.value)}
-            value={state.quote}
-            // step={selectedProduct.quote_increment}
-            // min={selectedProduct.quote_increment}
-          />
-        )}
-        <Preview productId={selectedProduct.id} key={selectedProduct.id} />
+        <Input
+          type="text"
+          onEdit={this.onChangeValue}
+          value={state.displayValue}
+          error={state.showError ? state.valueError : null}
+          onBlur={this.onInputBlur}
+        />
+        <Preview
+          productId={selectedProduct.id}
+          key={selectedProduct.id /* refresh on product change */}
+        />
       </form>
     );
   }
