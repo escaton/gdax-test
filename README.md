@@ -1,7 +1,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 ## Start
-`$ npm start`
+`$ npm i && npm start`
 
 ## Misc
 - all dependencies are "devDependencies", none of this is needed in runtime
