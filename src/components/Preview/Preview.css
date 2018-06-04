@@ -1,0 +1,14 @@
+.Preview {
+  display: flex;
+}
+
+.Preview__currency {
+}
+
+.Preview__space {
+  flex-grow: 1;
+  border-bottom: 1px dotted;
+}
+
+.Preview__sum {
+}

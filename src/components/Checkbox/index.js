@@ -1,43 +1,40 @@
 // @flow
 import * as React from 'react';
-import './Input.css';
+import './Checkbox.css';
 import { block } from 'nano-bem';
 
-const b = block('Input');
+const b = block('Checkbox');
 
-export default class Input extends React.PureComponent<{
+export default class Checkbox extends React.PureComponent<{
   onEdit: string => any,
   label: string,
-  error: ?string
+  name: string,
+  value: string,
+  checked: boolean
 }> {
   static idCounter = 0;
   static getId = () => {
-    Input.idCounter++;
-    return `Input-${Input.idCounter}`;
+    Checkbox.idCounter++;
+    return `Checkbox-${Checkbox.idCounter}`;
   };
   onChange = (e: *) => {
     this.props.onEdit(e.target.value);
   };
-  onFocus = (e: *) => {
-    e.target.select();
-  };
   render() {
-    const { props } = this;
-    const { onEdit, error, label, ...restProps } = props;
+    const { onEdit, label, ...rest } = this.props;
     const id = this.constructor.getId();
     return (
       <div className={b()}>
         <input
           id={id}
-          onChange={this.onChange}
-          onFocus={this.onFocus}
           className={b('control')}
-          {...restProps}
+          type="radio"
+          onChange={this.onChange}
+          {...rest}
         />
         <label htmlFor={id} className={b('label')}>
           {label}
         </label>
-        {error ? <span className={b('error')}>{error}</span> : null}
       </div>
     );
   }

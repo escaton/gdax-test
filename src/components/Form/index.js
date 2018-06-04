@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 import ProductsSelect from '../ProductsSelect';
+import Checkbox from '../Checkbox';
 import Input from '../Input';
 import Preview from '../Preview';
 
@@ -9,6 +10,11 @@ import dispatch from './dispatcher';
 
 import type { State } from './reducer';
 import type { ProductInfo } from 'gdax';
+
+import { block } from 'nano-bem';
+import './Form.css';
+
+const b = block('Form');
 
 export default class Form extends React.PureComponent<
   {
@@ -38,40 +44,48 @@ export default class Form extends React.PureComponent<
     const { state, props } = this;
     const selectedProduct = props.products[state.selectedProductIndex];
     return (
-      <form>
-        <ProductsSelect
-          products={props.products}
-          selectedId={selectedProduct.id}
-          onChange={this.onChangeProduct}
-        />
-        <input
-          type="radio"
-          checked={state.mode === 'buy'}
-          name="mode"
-          value="buy"
-          onChange={e => this.onChangeMode(e.target.value)}
-        />Buy
-        <input
-          type="radio"
-          checked={state.mode === 'sell'}
-          name="mode"
-          value="sell"
-          onChange={e => this.onChangeMode(e.target.value)}
-        />Sell
-        <Input
-          type="text"
-          onEdit={this.onChangeValue}
-          value={state.displayValue}
-          error={state.showError ? state.valueError : null}
-          onBlur={this.onInputBlur}
-        />
+      <div>
+        <form className={b()}>
+          <ProductsSelect
+            products={props.products}
+            selectedId={selectedProduct.id}
+            onChange={this.onChangeProduct}
+          />
+          <Checkbox
+            checked={state.mode === 'buy'}
+            name="mode"
+            value="buy"
+            onEdit={this.onChangeMode}
+            label="Buy"
+          />
+          <Checkbox
+            checked={state.mode === 'sell'}
+            name="mode"
+            value="sell"
+            onEdit={this.onChangeMode}
+            label="Sell"
+          />
+          <Input
+            type="text"
+            placeholder="0.00"
+            label={
+              state.mode === 'buy'
+                ? selectedProduct.quote_currency
+                : selectedProduct.base_currency
+            }
+            onEdit={this.onChangeValue}
+            value={state.displayValue}
+            error={state.showError ? state.valueError : null}
+            onBlur={this.onInputBlur}
+          />
+        </form>
         <Preview
           product={selectedProduct}
           mode={state.mode}
           amount={state.value}
           key={selectedProduct.id /* refresh on product change */}
         />
-      </form>
+      </div>
     );
   }
 }

@@ -4884,6 +4884,10 @@ nan@^2.9.2:
   version "2.10.0"
   resolved "http://storage.mds.yandex.net/get-npm/66641/nan-2.10.0.tgz#96d0cd610ebd58d4b4de9cc0c6828cda99c7548f"
 
+nano-bem@^2.0.0:
+  version "2.0.0"
+  resolved "http://storage.mds.yandex.net/get-npm/35308/nano-bem-2.0.0.tgz#9f4dd942d0945ea5cdfefad90f1baa889d0c1643"
+
 nanomatch@^1.2.9:
   version "1.2.9"
   resolved "http://storage.mds.yandex.net/get-npm/35308/nanomatch-1.2.9.tgz#879f7150cb2dab7a471259066c104eee6e0fa7c2"

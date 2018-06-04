@@ -42,8 +42,8 @@ export default (state: State = defaultState, action: any): State => {
       const newValue = parseFloat(newDisplayValue || '0');
       const { valid, reason } =
         mode === 'buy'
-          ? validateBase(newValue, currentProduct)
-          : validateQuote(newValue, currentProduct);
+          ? validateQuote(newValue, currentProduct)
+          : validateBase(newValue, currentProduct);
       return {
         ...state,
         value: valid ? newValue : state.value,

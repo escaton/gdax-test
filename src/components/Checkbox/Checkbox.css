@@ -1,0 +1,26 @@
+.Checkbox {
+  display: inline-flex;
+}
+
+.Checkbox__control {
+  display: none;
+}
+
+.Checkbox__label {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 1px;
+  color: hsla(0, 0%, 100%, 0.5);
+  background-color: hsla(0, 0%, 100%, 0.15);
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.Checkbox__control:checked ~ .Checkbox__label {
+  background-color: #4da53c;
+  color: #fff;
+}

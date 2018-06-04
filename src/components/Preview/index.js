@@ -6,6 +6,11 @@ import Loading from '../Loading';
 import { sumCalculation, formatSum } from './utils';
 import type { ProductInfo } from 'gdax';
 
+import { block } from 'nano-bem';
+import './Preview.css';
+
+const b = block('Preview');
+
 const ProductsBookProvider = WithGdax((service, props) =>
   service.getProductOrderBook(props.productId, { level: 2 })
 );
@@ -54,12 +59,18 @@ export default class Preview<
     const { mode, amount, product } = this.props;
     const [orders, currency, minimalAmount] =
       mode === 'buy'
-        ? [data.asks, product.quote_currency, product.quote_increment]
-        : [data.bids, product.base_currency, product.base_min_size];
+        ? [data.asks, product.base_currency, product.base_min_size]
+        : [data.bids, product.quote_currency, product.quote_increment];
     const sum = sumCalculation(orders, amount);
     if (sum >= 0) {
       const displaySum = formatSum(minimalAmount, sum);
-      return `${currency} ${displaySum}`;
+      return (
+        <React.Fragment>
+          <span className={b('currency')}>{`${currency} ≈`}</span>
+          <span className={b('space')} />
+          <span className={b('sum')}>{displaySum}</span>
+        </React.Fragment>
+      );
     } else {
       return `not enough data`;
     }
@@ -67,17 +78,19 @@ export default class Preview<
   render() {
     const { state, props } = this;
     return (
-      <ProductsBookProvider productId={props.product.id} time={state.time}>
-        {(loading, data, error) => {
-          if (data) {
-            return <span>{this.renderPreview(data)}</span>;
-          } else if (error) {
-            return <span>An error accured</span>;
-          } else {
-            return <Loading />;
-          }
-        }}
-      </ProductsBookProvider>
+      <div className={b()}>
+        <ProductsBookProvider productId={props.product.id} time={state.time}>
+          {(loading, data, error) => {
+            if (data) {
+              return this.renderPreview(data);
+            } else if (error) {
+              return <span>An error accured</span>;
+            } else {
+              return <Loading />;
+            }
+          }}
+        </ProductsBookProvider>
+      </div>
     );
   }
 }
