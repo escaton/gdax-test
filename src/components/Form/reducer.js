@@ -39,7 +39,7 @@ export default (state: State = defaultState, action: any): State => {
       const { selectedProductIndex, mode } = state;
       const currentProduct = products[selectedProductIndex];
       const newDisplayValue = formatValue(value);
-      const newValue = parseFloat(newDisplayValue || '0'); // cast to number for validation
+      const newValue = parseFloat(newDisplayValue || '0');
       const { valid, reason } =
         mode === 'buy'
           ? validateBase(newValue, currentProduct)

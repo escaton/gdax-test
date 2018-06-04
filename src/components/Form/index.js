@@ -66,7 +66,9 @@ export default class Form extends React.PureComponent<
           onBlur={this.onInputBlur}
         />
         <Preview
-          productId={selectedProduct.id}
+          product={selectedProduct}
+          mode={state.mode}
+          amount={state.value}
           key={selectedProduct.id /* refresh on product change */}
         />
       </form>
