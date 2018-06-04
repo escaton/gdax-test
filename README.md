@@ -9,7 +9,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - npm package `gdax` is used for access the gdax API. It works but with noisy warnings inside `ws` dependency
 - also gdax API is opened only for http and websocket requests are rejected
 - i tried to do it without `redux`, but create something similar in `Form` component
-- colors, and some styles are copy-pasted from [gdax.com](https://www.gdax.com)
+- some styles are copy-pasted from [gdax.com](https://www.gdax.com)
 
 ## TODO
 - save selected values (product, buy/sell) to localStorage and restore them on load
