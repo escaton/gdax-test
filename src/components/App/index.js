@@ -1,31 +1,29 @@
 // @flow
 import * as React from 'react';
 import Loading from '../Loading';
-import WithGdax from '../WithGdax';
+import Form from '../Form';
+import WithGdax from '../../hoc/WithGdax';
+
 import './App.css';
 
-import type { ProductInfo } from 'gdax';
-import type { WithGdaxLoader } from '../WithGdax';
+const ProductsProvider = WithGdax(service => service.getProducts());
 
-class App extends React.PureComponent<{
-  loading: boolean,
-  error: any,
-  data: ?(ProductInfo[]),
-  load: WithGdaxLoader
-}> {
-  componentDidMount() {
-    this.props.load(service => service.getProducts());
-  }
+export default class App extends React.PureComponent<{}> {
   render() {
-    const { loading, error, data } = this.props;
-    if (loading) {
-      return <Loading />;
-    } else if (error) {
-      return <div>An error occurred</div>;
-    } else {
-      return <pre>{JSON.stringify(data, null, 2)}</pre>;
-    }
+    return (
+      <ProductsProvider>
+        {(loading, products, error) => {
+          if (loading) {
+            return <Loading />;
+          } else if (error) {
+            return <div>An error occured</div>;
+          } else if (products) {
+            return <Form products={products} />;
+          } else {
+            return null;
+          }
+        }}
+      </ProductsProvider>
+    );
   }
 }
-
-export default WithGdax(App);
