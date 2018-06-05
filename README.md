@@ -18,5 +18,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - fix `ws` module because it breaks production build
   - eject and mock it in webpack
   - or remove `gdax` and get data just with `fetch`
-- fix strange FF XHR problem
-  - +1 to drop `gdax` and use `fetch` 
+- FF CORS requires user-agent header, `gdax` doesn't send it
+  - +1 drop `gdax` and use `fetch`
