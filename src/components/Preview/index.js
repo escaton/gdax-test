@@ -4,7 +4,7 @@ import WithGdax from '../../hoc/WithGdax';
 import Loading from '../Loading';
 
 import { sumCalculation, formatSum } from './utils';
-import type { ProductInfo } from 'gdax';
+import type { ProductInfo } from '../../services/gdax';
 
 import { block } from 'nano-bem';
 import './Preview.css';

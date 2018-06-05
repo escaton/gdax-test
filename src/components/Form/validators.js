@@ -1,5 +1,5 @@
 // @flow
-import type { ProductInfo } from 'gdax';
+import type { ProductInfo } from '../../services/gdax';
 
 const checkFractionality = (a, b) => {
   // this is because of javascript numbers nature

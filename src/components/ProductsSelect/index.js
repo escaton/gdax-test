@@ -1,8 +1,8 @@
 // @flow
 import * as React from 'react';
-import type { ProductInfo } from 'gdax';
 import { block } from 'nano-bem';
 import './ProductSelect.css';
+import type { ProductInfo } from '../../services/gdax';
 
 const b = block('ProductSelect');
 

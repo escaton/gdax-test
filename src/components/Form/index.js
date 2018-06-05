@@ -9,7 +9,7 @@ import * as actions from './actions';
 import dispatch from './dispatcher';
 
 import type { State } from './reducer';
-import type { ProductInfo } from 'gdax';
+import type { ProductInfo } from '../../services/gdax';
 
 import { block } from 'nano-bem';
 import './Form.css';
