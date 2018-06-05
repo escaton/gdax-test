@@ -19,7 +19,7 @@ export default class ProductSelect<T: ProductInfo> extends React.PureComponent<{
     return (
       <select className={b()} value={selectedId} onChange={this.onChange}>
         {products.map(value => (
-          <option key={value.id} value={value.id}>
+          <option key={value.id} value={value.id} className={b('option')}>
             {value.display_name}
           </option>
         ))}
