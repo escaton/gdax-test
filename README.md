@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+## Live
+[escaton.github.io/gdax-test](https://escaton.github.io/gdax-test/)
+
 ## Start
 `$ npm i && npm start`
 
